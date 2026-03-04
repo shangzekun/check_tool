@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .venv/
 app/report_output.xlsx
+
+# local packaging artifacts
+dist/*.zip

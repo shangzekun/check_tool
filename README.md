@@ -102,3 +102,17 @@ git push
 ```
 
 > 说明：如果 `git branch -a` 里看不到 `origin/main`，说明当前仓库副本没有配置远端主分支，需先补齐远端或在正确仓库中执行以上步骤。
+
+## 直接生成可下载解压包（ZIP）
+
+执行下面命令会生成完整项目压缩包：
+
+```bash
+bash scripts/package_release.sh
+```
+
+生成文件路径：
+
+- `dist/excel_check_tool_package.zip`
+
+解压后可直接按本文档“本地运行 / Docker 运行”启动项目。
