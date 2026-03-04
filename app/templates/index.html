@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel 检查工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <h1>Excel 检查平台</h1>
+        <p>上传 Excel 文件，按规则执行检查，查看结果并导出报告。</p>
+      </header>
+
+      <main class="layout">
+        <section class="top-grid">
+          <section class="panel upload-panel">
+            <h2>上传区（Upload Section）</h2>
+            <label class="upload-area" id="uploadArea">
+              <input type="file" id="fileInput" accept=".xlsx" hidden />
+              <div class="upload-inner">
+                <strong>拖拽 Excel 到这里</strong>
+                <span>或点击选择文件</span>
+                <button type="button" class="btn btn-primary">选择文件</button>
+              </div>
+            </label>
+            <div id="fileStatus" class="muted">尚未选择文件</div>
+
+            <div class="actions">
+              <button id="checkBtn" class="btn btn-primary">执行检查</button>
+              <button id="clearBtn" class="btn btn-ghost">清除结果</button>
+              <button id="exportBtn" class="btn btn-success" disabled>导出报告</button>
+            </div>
+          </section>
+
+          <section class="panel rules-panel" id="rulesPanel">
+            <div class="panel-head">
+              <h2>规则说明区（Rules Explanation）</h2>
+              <button id="rulesToggle" class="btn btn-ghost panel-toggle" type="button" aria-expanded="true">
+                折叠
+              </button>
+            </div>
+
+            <div class="rules-content" id="rulesContent">
+              <h3>启用规则</h3>
+              <div id="rules" class="rules-checklist"></div>
+              <h3>规则说明</h3>
+              <div id="ruleDescriptions" class="desc-list"></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="stats-grid" id="statsCards">
+          <article class="stat-card">
+            <div class="stat-label">总检查数</div>
+            <div class="stat-value" id="statTotal">0</div>
+          </article>
+          <article class="stat-card error">
+            <div class="stat-label">错误数</div>
+            <div class="stat-value" id="statError">0</div>
+          </article>
+          <article class="stat-card warning">
+            <div class="stat-label">警告数</div>
+            <div class="stat-value" id="statWarning">0</div>
+          </article>
+          <article class="stat-card info">
+            <div class="stat-label">信息数</div>
+            <div class="stat-value" id="statInfo">0</div>
+          </article>
+        </section>
+
+        <section class="panel results-panel">
+          <div class="panel-head result-head">
+            <h2>详细结果表格（Results Table）</h2>
+            <div class="filters">
+              <label><input type="radio" name="level" value="all" checked /> 全部</label>
+              <label><input type="radio" name="level" value="error" /> Error</label>
+              <label><input type="radio" name="level" value="warning" /> Warning</label>
+              <label><input type="radio" name="level" value="info" /> Info</label>
+            </div>
+          </div>
+
+          <div id="summaryCards" class="summary-cards"></div>
+
+          <div class="table-wrap">
+            <table id="issuesTable">
+              <thead>
+                <tr>
+                  <th>规则</th>
+                  <th>级别</th>
+                  <th>Sheet</th>
+                  <th>行号</th>
+                  <th>列名</th>
+                  <th>问题描述</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
