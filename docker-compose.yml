@@ -1,0 +1,7 @@
+services:
+  excel-check-tool:
+    build: .
+    container_name: excel-check-tool
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
