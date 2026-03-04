@@ -20,8 +20,8 @@
       </header>
 
       <main class="layout">
-        <section class="left-pane">
-          <div class="panel upload-panel">
+        <section class="top-grid">
+          <section class="panel upload-panel">
             <h2>上传区（Upload Section）</h2>
             <label class="upload-area" id="uploadArea">
               <input type="file" id="fileInput" accept=".xlsx" hidden />
@@ -38,29 +38,8 @@
               <button id="clearBtn" class="btn btn-ghost">清除结果</button>
               <button id="exportBtn" class="btn btn-success" disabled>导出报告</button>
             </div>
-          </div>
-
-          <section class="stats-grid" id="statsCards">
-            <article class="stat-card">
-              <div class="stat-label">总检查数</div>
-              <div class="stat-value" id="statTotal">0</div>
-            </article>
-            <article class="stat-card error">
-              <div class="stat-label">错误数</div>
-              <div class="stat-value" id="statError">0</div>
-            </article>
-            <article class="stat-card warning">
-              <div class="stat-label">警告数</div>
-              <div class="stat-value" id="statWarning">0</div>
-            </article>
-            <article class="stat-card info">
-              <div class="stat-label">信息数</div>
-              <div class="stat-value" id="statInfo">0</div>
-            </article>
           </section>
-        </section>
 
-        <section class="right-pane">
           <section class="panel rules-panel" id="rulesPanel">
             <div class="panel-head">
               <h2>规则说明区（Rules Explanation）</h2>
@@ -76,36 +55,55 @@
               <div id="ruleDescriptions" class="desc-list"></div>
             </div>
           </section>
+        </section>
 
-          <section class="panel results-panel">
-            <div class="panel-head result-head">
-              <h2>检查结果表格（Results Table）</h2>
-              <div class="filters">
-                <label><input type="radio" name="level" value="all" checked /> 全部</label>
-                <label><input type="radio" name="level" value="error" /> Error</label>
-                <label><input type="radio" name="level" value="warning" /> Warning</label>
-                <label><input type="radio" name="level" value="info" /> Info</label>
-              </div>
+        <section class="stats-grid" id="statsCards">
+          <article class="stat-card">
+            <div class="stat-label">总检查数</div>
+            <div class="stat-value" id="statTotal">0</div>
+          </article>
+          <article class="stat-card error">
+            <div class="stat-label">错误数</div>
+            <div class="stat-value" id="statError">0</div>
+          </article>
+          <article class="stat-card warning">
+            <div class="stat-label">警告数</div>
+            <div class="stat-value" id="statWarning">0</div>
+          </article>
+          <article class="stat-card info">
+            <div class="stat-label">信息数</div>
+            <div class="stat-value" id="statInfo">0</div>
+          </article>
+        </section>
+
+        <section class="panel results-panel">
+          <div class="panel-head result-head">
+            <h2>详细结果表格（Results Table）</h2>
+            <div class="filters">
+              <label><input type="radio" name="level" value="all" checked /> 全部</label>
+              <label><input type="radio" name="level" value="error" /> Error</label>
+              <label><input type="radio" name="level" value="warning" /> Warning</label>
+              <label><input type="radio" name="level" value="info" /> Info</label>
             </div>
+          </div>
 
-            <div id="summaryCards" class="summary-cards"></div>
+          <div id="summaryCards" class="summary-cards"></div>
 
-            <div class="table-wrap">
-              <table id="issuesTable">
-                <thead>
-                  <tr>
-                    <th>规则</th>
-                    <th>级别</th>
-                    <th>Sheet</th>
-                    <th>行号</th>
-                    <th>列名</th>
-                    <th>问题描述</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </section>
+          <div class="table-wrap">
+            <table id="issuesTable">
+              <thead>
+                <tr>
+                  <th>规则</th>
+                  <th>级别</th>
+                  <th>Sheet</th>
+                  <th>行号</th>
+                  <th>列名</th>
+                  <th>问题描述</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
         </section>
       </main>
     </div>
