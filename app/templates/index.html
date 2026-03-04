@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel 检查工具</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Excel 检查工具</h1>
+        <p>上传 .xlsx，勾选检查项，查看并导出报告。</p>
+      </header>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>上传与检查</h2>
+          <label class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept=".xlsx" hidden />
+            <span>拖拽文件到此处，或点击选择</span>
+          </label>
+          <div id="fileStatus" class="muted">尚未选择文件</div>
+
+          <h3>检查规则</h3>
+          <div id="rules" class="rules"></div>
+
+          <div class="actions">
+            <button id="checkBtn">执行检查</button>
+            <button id="clearBtn" class="secondary">清除结果</button>
+            <button id="exportBtn" class="secondary" disabled>导出报告</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>规则说明</h2>
+          <div id="ruleDescriptions" class="desc-list"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>结果总览</h2>
+        <div id="summaryCards" class="cards"></div>
+      </section>
+
+      <section class="panel">
+        <div class="result-header">
+          <h2>问题明细</h2>
+          <div class="filters">
+            <label><input type="radio" name="level" value="all" checked /> 全部</label>
+            <label><input type="radio" name="level" value="error" /> Error</label>
+            <label><input type="radio" name="level" value="warning" /> Warning</label>
+            <label><input type="radio" name="level" value="info" /> Info</label>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="issuesTable">
+            <thead>
+              <tr>
+                <th>规则</th>
+                <th>级别</th>
+                <th>Sheet</th>
+                <th>行</th>
+                <th>列</th>
+                <th>描述</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
