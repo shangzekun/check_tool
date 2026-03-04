@@ -42,3 +42,21 @@ docker compose up --build
 ## 规则扩展
 
 规则位于 `app/rules/` 目录。每条规则是一个独立 Python 模块，统一返回问题列表（issues），便于后续持续扩展。
+
+## 与 `main` 分支冲突处理建议
+
+当分支提示与 `main` 存在冲突时，建议按以下流程处理：
+
+```bash
+git fetch origin
+git checkout <your-branch>
+git merge origin/main
+```
+
+- 优先保留 `app/main.py`、`app/models.py` 与 `app/rules/` 中接口和数据模型的一致性。
+- 前端冲突优先检查 `app/templates/index.html` 与 `app/static/style.css` 的布局是否仍满足：上传区在左上、规则说明在右上（1:2）、统计区在中间、结果表格在最下方。
+- 冲突解决后执行基础校验：
+
+```bash
+python -m compileall app
+```
